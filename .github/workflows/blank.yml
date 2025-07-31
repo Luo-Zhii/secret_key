@@ -10,7 +10,12 @@ on:
 jobs:
   DEV:
     runs-on: ubuntu-latest
-    enviroment: secret_key
+    environment: secret_key
+
+    env:
+      PORT: ${{ vars.PORT }}
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
     steps:
       - name: Checkout code
@@ -22,3 +27,7 @@ jobs:
           echo "PORT is: ${{ vars.PORT }}"
           echo "MONGODB_URI is: ${{ secrets.MONGODB_URI }}"
           echo "===TEST==="
+
+          echo "PORT is: $PORT"
+          echo "MONGODB_URI is: $MONGODB_URI"
+          echo "SECRET_KEY is: $SECRET_KEY"
