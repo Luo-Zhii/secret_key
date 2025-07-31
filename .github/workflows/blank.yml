@@ -11,11 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Load environment variables here
-    env:
-      PORT: ${{ vars.PORT }}
-      MONGODB_URI: ${{ secrets.MONGODB_URI }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,3 +21,6 @@ jobs:
           echo "PORT is: $PORT"
           echo "MONGODB_URI is: $MONGODB_URI"
           echo "===TEST==="
+        env:
+          PORT: ${{ vars.PORT }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
